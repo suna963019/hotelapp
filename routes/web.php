@@ -26,10 +26,11 @@ Route::get('/hotel/login','AcountController@login');
 
 
 //ログイン必須のページ
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
+
+
+//AUTH認証用
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
