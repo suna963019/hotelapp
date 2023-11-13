@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ReservationDetail;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -14,7 +15,8 @@ class ReservationController extends Controller
         return view('hotel.index');
     }
     public function reservationDetail(Request $request){
-        return view('hotel.index');
+        ReservationDetail::all();
+        return view('reservation.reservationDetail');
     }
     public function reservationUpdate(Request $request){
         return view('hotel.index');

@@ -11,6 +11,8 @@
 |
 */
 
+use App\Reservation;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,9 +28,9 @@ Route::get('/hotel/login','AcountController@login');
 
 
 //ログイン必須のページ
+Route::get('/hotel/reservationdetail','ReservationController@reservationDetail');
 
-
-
+//AUTHの改造待ち
 
 //AUTH認証用
 Auth::routes();

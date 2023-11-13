@@ -14,7 +14,11 @@ class CreateReservationDetailsTable extends Migration
     public function up()
     {
         Schema::create('reservation_details', function (Blueprint $table) {
-            $table->string('damy');
+            $table->increments('id');
+            $table->integer('reservation_id');
+            $table->integer('room_id');
+            $table->integer('reservation_days');
+            $table->integer('reservation_value');
             $table->timestamps();
         });
     }
