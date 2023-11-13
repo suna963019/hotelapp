@@ -1,0 +1,6 @@
+$table->primaryId('id')
+
+$table->int('カラム名')
+$table->foreignId('カラム名')->references('外部キー名')->on('外部キーのあるテーブル名')
+
+海沿いの老舗旅館
