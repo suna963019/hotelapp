@@ -96,11 +96,13 @@
             <ul id="nav_list">
                 <li><a href="/hotel/index">概要</a></li>
                 <li><a href="/hotel/booking">ご予約</a></li>
+                <li><a href="/hotel/login">新規登録・ログイン</a></li>
                 <li><a href="#">お問い合わせ</a></li>
             </ul>
         </nav>
     </header>
     <main>
+        <a href="/hotel/reservationdetail">here</a>
         <div>
             @yield('content')
         </div>

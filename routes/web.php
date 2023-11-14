@@ -11,23 +11,25 @@
 |
 */
 
-use App\Reservation;
-
 Route::get('/', function () {
     return view('welcome');
 });
 //ログイン無しでも可能なページ
+Route::get('/hotel',function(){
+    return redirect('/hotel/index');
+});
 Route::get('/hotel/index','MainController@index');
 Route::get('/hotel/booking','MainController@booking');
 
 
 //ログインページ
 Route::get('/hotel/login','AcountController@login');
-// Route::push('/hotel/loginaction','AcountController@loginAction');
+Route::post('/hotel/login','AcountController@loginAction');
 // Route::push('/hotel/logout','AcountController@logout');
 
 
 //ログイン必須のページ
+Route::get('/hotel/roomcheck','ReservationController@roomCheck');
 Route::get('/hotel/reservationdetail','ReservationController@reservationDetail');
 
 //AUTHの改造待ち

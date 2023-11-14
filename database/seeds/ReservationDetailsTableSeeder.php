@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ReservationDetailTableSeeder extends Seeder
+class ReservationDetailsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,10 +14,10 @@ class ReservationDetailTableSeeder extends Seeder
     {
         $param=[
             'reservation_id'=>1,
-            'room_id'=>4,
-            'reservation_days'=>3,
-            'reservation_value'=>1200,
+            'room_id'=>1,
+            'reservation_day'=>2,
+            'reservation_price'=>24000,
         ];
-        DB::table('rooms')->insert($param);
+        DB::table('reservation_details')->insert($param);
     }
 }

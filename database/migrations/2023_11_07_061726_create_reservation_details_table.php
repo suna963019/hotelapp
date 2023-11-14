@@ -17,8 +17,8 @@ class CreateReservationDetailsTable extends Migration
             $table->increments('id');
             $table->integer('reservation_id');
             $table->integer('room_id');
-            $table->integer('reservation_days');
-            $table->integer('reservation_value');
+            $table->integer('reservation_day');
+            $table->integer('reservation_price');
             $table->timestamps();
         });
     }

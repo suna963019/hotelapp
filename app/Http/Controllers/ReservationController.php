@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ReservationDetail;
+use App\Reservation;
+use App\Room;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -11,12 +12,13 @@ class ReservationController extends Controller
     public function reservation(Request $request){
         return view('hotel.index');
     }
-    public function reservationAdd(Request $request){
-        return view('hotel.index');
+    public function roomCheck(Request $request){
+        $items=Room::where('id','=',1)->get();
+        return view('reservation.roomCheck',['items'=>$items]);
     }
     public function reservationDetail(Request $request){
-        ReservationDetail::all();
-        return view('reservation.reservationDetail');
+        $items=Reservation::where('id','==',1)->get();
+        return view('reservation.reservationDetail',['items'=>$items]);
     }
     public function reservationUpdate(Request $request){
         return view('hotel.index');
