@@ -20,6 +20,7 @@ Route::get('/hotel',function(){
 });
 Route::get('/hotel/index','MainController@index');
 Route::get('/hotel/booking','MainController@booking');
+Route::post('/hotel/booking','MainController@reservation');
 
 
 //ログインページ

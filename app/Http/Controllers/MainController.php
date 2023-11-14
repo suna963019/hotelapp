@@ -8,32 +8,44 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     //ホーム
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         return view('main.index');
     }
     public function booking(Request $request){
         $table=RoomType::all();
-        $reservation_in=$request->check_in;
-        $reservation_out=$request->check_out;
-        foreach (RoomType::where('id',1)->room as $room) {
-            foreach ( $room->reservation as $reservation) {
-                //in or outが
-                if ($reservation_in>=$reservation->check_in ||$reservation_in<$reservation->check_out ) {
-                    
+        return view('main.booking',['rooms'=>$table]);
+    }
+    public function reservation(Request $request)
+    {
+        $reservation_in = $request->check_in;
+        $reservation_out = $request->check_out;
+        $roomId=-1;
+        $check=true;
+        foreach (RoomType::where('id', 1)->get()->room as $room) {
+            $check = true;
+            foreach ($room->reservation as $reservation) {
+                //in or outが中にあるか
+                if ($reservation_in >= $reservation->check_in || $reservation_in < $reservation->check_out) {
+                    $check = false;
                     break;
                 }
 
-                if ($reservation_out>$reservation->check_in ||$reservation_out<=$reservation->check_out ) {
-                    
+                if ($reservation_out > $reservation->check_in || $reservation_out <= $reservation->check_out) {
+                    $check = false;
                     break;
                 }
-                
-                if ($reservation_out>$reservation->check_in ||$reservation_out<=$reservation->check_out ) {
-                    
+                //inとoutの中にあるか
+                if ($reservation_out > $reservation->check_in || $reservation_out <= $reservation->check_out) {
+                    $check = false;
                     break;
                 }
             }
+            if ($check) {
+                $roomId=$room->id;
+                break;
+            }
         }
-        return view('main.booking',['rooms'=>$table]);
+        return view('main.result', ['check' => $check,'roomId'=>$roomId]);
     }
 }

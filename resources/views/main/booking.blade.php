@@ -14,7 +14,7 @@
             </tr>
         </table>
         <div class="right">
-            <form action="" method="POST">
+            <form action="/hotel/booking" method="POST">
                 <input type="hidden" name="type" value="{{ $room->id }}">
                 <input type="submit" value="予約する">
             </form>
