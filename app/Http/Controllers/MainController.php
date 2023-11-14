@@ -18,13 +18,16 @@ class MainController extends Controller
     }
     public function reservation(Request $request)
     {
-        $reservation_in = $request->check_in;
-        $reservation_out = $request->check_out;
+        // $reservation_in = $request->check_in;
+        // $reservation_out = $request->check_out;
+        $reservation_in = '2023-12-23';
+        $reservation_out = '2023-12-24';
         $roomId=-1;
         $check=true;
-        foreach (RoomType::where('id', 1)->get()->room as $room) {
+        $obj=RoomType::where('id', 1)->first();
+        foreach ($obj->rooms as $room) {
             $check = true;
-            foreach ($room->reservation as $reservation) {
+            foreach ($room->reservations as $reservation) {
                 //in or outが中にあるか
                 if ($reservation_in >= $reservation->check_in || $reservation_in < $reservation->check_out) {
                     $check = false;
