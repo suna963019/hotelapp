@@ -24,7 +24,7 @@ class MainController extends Controller
         $reservation_out = '2023-12-24';
         $roomId=-1;
         $check=true;
-        $obj=RoomType::where('id', 1)->first();
+        $obj=RoomType::where('id', $request->id)->first();
         foreach ($obj->rooms as $room) {
             $check = true;
             foreach ($room->reservations as $reservation) {

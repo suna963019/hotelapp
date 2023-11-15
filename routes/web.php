@@ -19,6 +19,7 @@ Route::get('/hotel',function(){
     return redirect('/hotel/index');
 });
 Route::get('/hotel/index','MainController@index');
+Route::get('/hotel/bookingform','MainController@bookingForm');
 Route::get('/hotel/booking','MainController@booking');
 Route::post('/hotel/booking','MainController@reservation');
 

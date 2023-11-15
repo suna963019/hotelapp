@@ -16,7 +16,7 @@
         <div class="right">
             <form action="/hotel/booking" method="POST">
                 @csrf
-                <input type="hidden" name="type" value="{{ $room->id }}">
+                <input type="hidden" name="id" value="{{ $room->id }}">
                 <input type="submit" value="予約する">
             </form>
         </div>
