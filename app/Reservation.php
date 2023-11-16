@@ -9,6 +9,13 @@ class Reservation extends Model
     protected $primaryKey = 'id';
 
     protected $guarded=array('id');
+
+    public static $reservation_rules=array(
+        'adults'=>'required',
+        'children'=>'required',
+        'check_in'=>'required',
+        'check_out'=>'required',
+    );
     
     public function reservationDetails(){
         return $this->hasMany('App\ReservationDetail');

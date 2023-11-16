@@ -114,7 +114,7 @@
         <div>
             <h2>案内</h2>
             <ul>
-                <li><a href="/hotel/index">ほ</a></li>
+                <li><a href="/hotel/index">ホーム</a></li>
                 {{-- <li><a href="/hotel/booking">ご予約</a></li>
                 <li><a href="/hotel/login">新規登録・ログイン</a></li> --}}
                 <li><a href="#">お問い合わせ</a></li>

@@ -14,11 +14,11 @@
             </tr>
             <tr>
                 <th>大人</th>
-                <td><input type="number" name="adults" value="0"></td>
+                <td><input type="number" name="adults" value="0" min="0"></td>
             </tr>
             <tr>
                 <th>子供</th>
-                <td><input type="number" name="children" value="0"></td>
+                <td><input type="number" name="children" value="0" min="0"></td>
             </tr>
             <tr>
                 <th>チェックイン</th>

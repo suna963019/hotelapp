@@ -23,6 +23,7 @@ class MainController extends Controller
     }
     public function reservation(Request $request)
     {
+        $this->validate($request,Reservation::$reservation_rules);
         $item = RoomType::reservationCheck($request);
 
         if ($item != -1) {
