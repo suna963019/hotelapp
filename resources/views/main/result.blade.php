@@ -3,10 +3,10 @@
 @section('title','index')
 @section('content')
     <div>
-        @if ($check)
-            <p>{{$roomId}}</p>
+        @if ($roomId!=-1)
+            <p>予約が完了しました</p>
         @else
-            <p>miss</p>
+            <p>お部屋の空きがありませんでした</p>
         @endif
     </div>
 @endsection

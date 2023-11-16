@@ -13,11 +13,11 @@ class ReservationController extends Controller
         return view('hotel.index');
     }
     public function roomCheck(Request $request){
-        $items=Room::where('id','=',1)->get();
+        $items=Room::where('id',1)->get();
         return view('reservation.roomCheck',['items'=>$items]);
     }
     public function reservationDetail(Request $request){
-        $items=Reservation::where('id','==',1)->get();
+        $items=Reservation::where('id',1)->first();
         return view('reservation.reservationDetail',['items'=>$items]);
     }
     public function reservationUpdate(Request $request){

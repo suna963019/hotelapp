@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     protected $primaryKey = 'id';
+
+    protected $guarded=array('id');
     
     public function reservationDetails(){
         return $this->hasMany('App\ReservationDetail');

@@ -55,6 +55,8 @@
             width: 100px;
             padding: 10px 20px;
             border: 1px solid white;
+            color: white;
+            background-color: rgb(209, 114, 30);
             text-align: center
         }
 
@@ -77,6 +79,7 @@
         }
 
         td {
+            text-align: center;
             width: 250px;
         }
 
@@ -92,17 +95,16 @@
 <body>
     <header>
         <h1>HOTEL:SAKURAI</h1>
+        <a href="/hotel/login">新規登録・ログイン</a>
         <nav>
             <ul id="nav_list">
-                <li><a href="/hotel/index">概要</a></li>
-                <li><a href="/hotel/booking">ご予約</a></li>
-                <li><a href="/hotel/login">新規登録・ログイン</a></li>
+                <li><a href="/hotel/index">ホーム</a></li>
+                {{-- <li><a href="/hotel/booking">ご予約</a></li> --}}
                 <li><a href="#">お問い合わせ</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <a href="/hotel/reservationdetail">here</a>
         <div>
             @yield('content')
         </div>
@@ -112,9 +114,9 @@
         <div>
             <h2>案内</h2>
             <ul>
-                <li><a href="/hotel/index">概要</a></li>
-                <li><a href="/hotel/booking">ご予約</a></li>
-                <li><a href="/hotel/login">新規登録・ログイン</a></li>
+                <li><a href="/hotel/index">ほ</a></li>
+                {{-- <li><a href="/hotel/booking">ご予約</a></li>
+                <li><a href="/hotel/login">新規登録・ログイン</a></li> --}}
                 <li><a href="#">お問い合わせ</a></li>
             </ul>
         </div>

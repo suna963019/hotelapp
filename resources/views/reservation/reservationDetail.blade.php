@@ -3,7 +3,7 @@
 @section('title', 'detail')
 @section('content')
     @if ($items != null)
-        @foreach ($items->revervationDetails as $item)
+        @foreach ($items->reservationDetails as $item)
             <table>
                 <tr>
                     <th>宿泊日数</th>

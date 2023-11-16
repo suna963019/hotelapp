@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Reservation;
+use App\ReservationDetail;
 use App\RoomType;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -10,45 +13,52 @@ class MainController extends Controller
     //ホーム
     public function index(Request $request)
     {
-        return view('main.index');
+        $table = RoomType::all();
+        return view('main.index', ['rooms' => $table]);
     }
-    public function booking(Request $request){
-        $table=RoomType::all();
-        return view('main.booking',['rooms'=>$table]);
+    public function booking(Request $request)
+    {
+        $type = RoomType::where('id', $request->id)->first();
+        return view('main.booking', ['room' => $type]);
     }
     public function reservation(Request $request)
     {
-        // $reservation_in = $request->check_in;
-        // $reservation_out = $request->check_out;
-        $reservation_in = '2023-12-23';
-        $reservation_out = '2023-12-24';
-        $roomId=-1;
-        $check=true;
-        $obj=RoomType::where('id', $request->id)->first();
-        foreach ($obj->rooms as $room) {
-            $check = true;
-            foreach ($room->reservations as $reservation) {
-                //in or outが中にあるか
-                if ($reservation_in >= $reservation->check_in || $reservation_in < $reservation->check_out) {
-                    $check = false;
-                    break;
-                }
+        $item = RoomType::reservationCheck($request);
 
-                if ($reservation_out > $reservation->check_in || $reservation_out <= $reservation->check_out) {
-                    $check = false;
-                    break;
-                }
-                //inとoutの中にあるか
-                if ($reservation_out > $reservation->check_in || $reservation_out <= $reservation->check_out) {
-                    $check = false;
-                    break;
-                }
-            }
-            if ($check) {
-                $roomId=$room->id;
-                break;
-            }
+        if ($item != -1) {
+            $reservation = new Reservation();
+            $form = [
+                'guest_id' => $request->id,
+                'reservation_num' => $request->adults + $request->children,
+                'reservation_adults' => $request->adults,
+                'reservation_children' => $request->children,
+                'check_in' => $request->check_in,
+                'check_out' => $request->check_out,
+                'other' => '',
+            ];
+            $data = $reservation->fill($form);
+            $data->save();
+
+            $carbonIn = new Carbon($request->check_in);
+            $carbonOut = new Carbon($request->check_out);
+            $between = $carbonIn->diffInDays($carbonOut);
+            $data->room()->sync(
+                [$request->type => [
+                        'room_id' => $item,
+                        'reservation_day' => $between,
+                        'reservation_price' => 18000,]]
+            );
+
+
+            // $reservation = new ReservationDetail();
+            // $form = [
+            //     'reservation_id' => 1,
+            //     'room_id' => $request->type,
+            //     'reservation_day' => $between,
+            //     'reservation_price' => 18000,
+            // ];
+            // $reservation->fill($form)->save();
         }
-        return view('main.result', ['check' => $check,'roomId'=>$roomId]);
+        return view('main.result', ['roomId' => $item]);
     }
 }
