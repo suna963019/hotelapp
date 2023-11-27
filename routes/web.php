@@ -19,14 +19,16 @@ Route::get('/hotel',function(){
     return redirect('/hotel/index');
 });
 Route::get('/hotel/index','MainController@index');
-Route::get('/hotel/booking/type','MainController@booking');
+Route::get('/hotel/booking/type','MainController@booking')->middleware('auth');;
 Route::post('/hotel/booking','MainController@reservation');
 
 
 //ログインページ(仮)
-Route::get('/hotel/login','AcountController@login');
-Route::post('/hotel/login','AcountController@loginAction');
-// Route::push('/hotel/logout','AcountController@logout');
+Route::get('/hotel/register','LoginController@register');
+Route::post('/hotel/register','LoginController@registerAction');
+Route::get('/hotel/login','LoginController@login');
+Route::post('/hotel/login','LoginController@loginAction');
+Route::get('/hotel/logout','LoginController@logout');
 
 
 //ログイン必須のページ

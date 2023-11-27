@@ -95,8 +95,12 @@
 <body>
     <header>
         <h1>HOTEL:SAKURAI</h1>
-        <a href="/register">新規登録</a>
-        <a href="/login">ログイン</a>
+        @if (Auth::check())
+            <a href="/hotel/logout">ログアウト</a>
+        @else
+            <a href="/hotel/register">新規登録</a>
+            <a href="/hotel/login">ログイン</a>
+        @endif
         <nav>
             <ul id="nav_list">
                 <li><a href="/hotel/index">ホーム</a></li>

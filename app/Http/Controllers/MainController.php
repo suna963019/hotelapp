@@ -23,7 +23,19 @@ class MainController extends Controller
     }
     public function reservation(Request $request)
     {
-        $this->validate($request, Reservation::$reservation_rules);
+        $message = [
+            'adults.number' => '人数を整数で入力してください。',
+            'children.number' => '人数を整数で入力してください。',
+            'check_in.required' => '宿泊日を入力してください。',
+            'check_out.required' => '宿泊日を入力してください。',
+        ];
+        $validate = [
+            'adults' => 'required',
+            'children' => 'required',
+            'check_in' => 'required',
+            'check_out' => 'required',
+        ];
+        $this->validate($request, $validate, $message);
         $item = RoomType::reservationCheck($request);
 
         if ($item != -1) {
