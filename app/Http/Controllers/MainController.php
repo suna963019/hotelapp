@@ -23,7 +23,7 @@ class MainController extends Controller
     }
     public function reservation(Request $request)
     {
-        $this->validate($request,Reservation::$reservation_rules);
+        $this->validate($request, Reservation::$reservation_rules);
         $item = RoomType::reservationCheck($request);
 
         if ($item != -1) {
@@ -35,7 +35,7 @@ class MainController extends Controller
                 'reservation_children' => $request->children,
                 'check_in' => $request->check_in,
                 'check_out' => $request->check_out,
-                'other' => '',
+                'other' => '備考',
             ];
             $data = $reservation->fill($form);
             $data->save();
@@ -43,12 +43,20 @@ class MainController extends Controller
             $carbonIn = new Carbon($request->check_in);
             $carbonOut = new Carbon($request->check_out);
             $between = $carbonIn->diffInDays($carbonOut);
-            $data->room()->sync(
-                [$request->type => [
-                        'room_id' => $item,
-                        'reservation_day' => $between,
-                        'reservation_price' => 18000,]]
-            );
+            // $data->room()->sync(
+            //     [$request->type => [
+            //             'room_id' => $item,
+            //             'reservation_day' => $between,
+            //             'reservation_price' => 18000,]]
+            // );
+            $form2 = [
+                'room_id' => $item,
+                'reservation_id' => $data->id,
+                'reservation_day' => $between,
+                'reservation_price' => 18000,
+            ];
+            $reservationDetail = new ReservationDetail();
+            $reservationDetail->fill($form2)->save();
 
 
             // $reservation = new ReservationDetail();

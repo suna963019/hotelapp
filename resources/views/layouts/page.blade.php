@@ -95,7 +95,8 @@
 <body>
     <header>
         <h1>HOTEL:SAKURAI</h1>
-        <a href="/hotel/login">新規登録・ログイン</a>
+        <a href="/register">新規登録</a>
+        <a href="/login">ログイン</a>
         <nav>
             <ul id="nav_list">
                 <li><a href="/hotel/index">ホーム</a></li>

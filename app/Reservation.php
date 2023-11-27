@@ -16,6 +16,7 @@ class Reservation extends Model
         'check_in'=>'required',
         'check_out'=>'required',
     );
+    public static $message=[];
     
     public function reservationDetails(){
         return $this->hasMany('App\ReservationDetail');

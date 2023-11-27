@@ -17,6 +17,8 @@ class AcountController extends Controller
         $_SESSION['address']=$user->guest_address;
         $_SESSION['tel']=$user->guest_tel;
         $url='reservation.'.$request->session()->get('url');
+
+        
         return redirect($url);
     }
     public function logout(Request $request){

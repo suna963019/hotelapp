@@ -17,7 +17,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        <form action="/hotel/booking/type" method="POST">
+                        <form action="/hotel/booking/type" method="GET">
                             @csrf
                             <input type="hidden" name="id" value="{{ $room->id }}">
                             <input type="submit" value="予約する">
