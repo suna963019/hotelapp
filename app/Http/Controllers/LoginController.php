@@ -32,6 +32,9 @@ class LoginController extends Controller
             'password'=>Hash::make($request->pass),
         ];
         $table = new User();
+        if (is_null($table->where('email',$request->mail)->first())) {
+            return back();
+        }
         $table->fill($param)->save();
         Auth::attempt([
             'email' => $request->mail,
@@ -62,7 +65,7 @@ class LoginController extends Controller
             $mes='ログインに成功しました。';
         }else{
             $mes='ログインに失敗しました。';
-            
+            return back();
         }
         return redirect('/hotel');
     }

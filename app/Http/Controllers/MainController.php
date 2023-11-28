@@ -16,12 +16,14 @@ class MainController extends Controller
         $table = RoomType::all();
         return view('main.index', ['rooms' => $table]);
     }
-    public function booking(Request $request)
+
+    public function bookingType(Request $request)
     {
         $type = RoomType::where('id', $request->id)->first();
-        return view('main.booking', ['room' => $type]);
+        return view('main.bookingType', ['room' => $type]);
     }
-    public function reservation(Request $request)
+    
+    public function reservationType(Request $request)
     {
         $message = [
             'adults.number' => '人数を整数で入力してください。',

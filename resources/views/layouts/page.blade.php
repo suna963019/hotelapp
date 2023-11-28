@@ -22,6 +22,14 @@
             display: flex;
             justify-content: right;
         }
+        .flex{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .wl{
+            margin-left: 15px;
+        }
 
         header,
         footer {
@@ -35,6 +43,14 @@
             color: white;
             background-color: rgb(228, 157, 110);
         }
+        table input {
+            width: 250px;
+            margin: 3px;
+            padding: 3px 5px;
+            color: white;
+            background-color: rgb(228, 157, 110);
+        }
+        
 
         header {
             display: flex;
@@ -60,9 +76,13 @@
             text-align: center
         }
 
-        main {
+        main{
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+        }
+
+        main div{
+            width: 850px;
         }
 
         table {
