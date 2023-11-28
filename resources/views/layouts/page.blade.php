@@ -28,7 +28,7 @@
         }
 
         .wl{
-            margin-left: 15px;
+            margin-left: 30px;
         }
 
         header,
@@ -79,10 +79,7 @@
         main{
             display: flex;
             justify-content: center;
-        }
-
-        main div{
-            width: 850px;
+            min-height: 430.5px;
         }
 
         table {

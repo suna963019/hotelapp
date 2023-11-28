@@ -2,7 +2,7 @@
 
 @section('title', 'register')
 @section('content')
-
+<h2>新規登録</h2>
     <form action="/hotel/register" method="POST">
         @csrf
         <table>

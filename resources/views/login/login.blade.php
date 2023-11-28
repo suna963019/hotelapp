@@ -2,7 +2,7 @@
 
 @section('title', 'login')
 @section('content')
-
+    <h2>ログイン</h2>
     <form action="/hotel/login" method="POST">
         @csrf
         <table>
