@@ -20,7 +20,7 @@ class MainController extends Controller
     public function bookingType(Request $request)
     {
         $type = RoomType::where('id', $request->id)->first();
-        return view('main.bookingType', ['room' => $type]);
+        return view('main.booking', ['room' => $type]);
     }
     
     public function reservationType(Request $request)

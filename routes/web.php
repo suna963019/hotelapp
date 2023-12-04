@@ -31,7 +31,9 @@ Route::post('/hotel/booking', 'MainController@reservation');
 //ログインページ(仮)
 Route::get('/hotel/register', 'LoginController@register');
 Route::post('/hotel/register', 'LoginController@registerAction');
+
 Route::get('/hotel/login', 'LoginController@login')->name('hotel.login');
+
 Route::post('/hotel/login', 'LoginController@loginAction');
 Route::get('/hotel/logout', 'LoginController@logout');
 
